@@ -34,12 +34,15 @@ Personal configuration files for development environment setup.
 - Creates backups of existing dotfiles in `~/.dotfiles_backup_YYYYMMDD_HHMMSS`
 - Creates symbolic links from your home directory to the dotfiles in this repository
 - Configures git to use the global gitignore file
+- Installs Claude Code CLI tool
+- Installs zsh (if not present) and sets it as the default shell
 
 ## Post-installation
 
-- **Zsh users**: Restart your terminal or run `source ~/.zshrc`
-- **Bash users**: Restart your terminal or run `source ~/.bashrc`
+- **Shell**: Restart your terminal to use zsh as the default shell
+- **Zsh users**: Run `source ~/.zshrc` to apply changes immediately  
 - **Tmux users**: Start tmux or run `tmux source-file ~/.tmux.conf`
+- **Claude Code**: The `claude` command should be available in your terminal
 
 ## Features
 
@@ -69,6 +72,11 @@ Personal configuration files for development environment setup.
 - Mouse support
 - Vi-mode key bindings
 - Custom status bar
+
+### Development Tools
+- **Claude Code**: AI-powered coding assistant CLI
+- **Zsh**: Modern shell with Oh My Zsh configuration
+- **Git**: Optimized configuration with useful aliases
 
 ## Customization
 
