@@ -16,7 +16,7 @@ Personal configuration files for development environment setup.
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git
+   git clone https://github.com/huixiang-liu/dotfiles.git
    cd dotfiles
    ```
 
@@ -85,7 +85,7 @@ These dotfiles are designed for organization/team use:
 
 2. **Installation for team members**:
    ```bash
-   git clone https://github.com/YOUR_PERSONAL_USERNAME/dotfiles.git
+   git clone https://github.com/huixiang-liu/dotfiles.git
    cd dotfiles
    ./install.sh
    ```
