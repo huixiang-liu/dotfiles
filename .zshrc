@@ -1,20 +1,15 @@
 # Oh My Zsh configuration
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+# Powerlevel10k theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
     git
-    docker
-    kubectl
-    node
     npm
-    yarn
     python
     pip
     brew
-    macos
-    vscode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -26,27 +21,12 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export EDITOR='vim'
 
 # Aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias jut='just unit-test'
+alias tg='turbo generate-types'
+alias rp='just dev-replace'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-# Git aliases
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-alias gl='git pull'
-alias gd='git diff'
-
-# Docker aliases
-alias dps='docker ps'
-alias dpa='docker ps -a'
-alias di='docker images'
-alias drm='docker rm'
-alias drmi='docker rmi'
 
 # Node.js aliases
 alias nr='npm run'
@@ -62,3 +42,11 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
+
+# Powerlevel10k instant prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Load Powerlevel10k config
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

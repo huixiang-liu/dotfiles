@@ -48,22 +48,32 @@ fi
 # Set zsh as default shell
 echo "Setting zsh as default shell..."
 if command -v zsh >/dev/null 2>&1; then
-    # Get current user's shell
-    current_shell=$(getent passwd "$USER" 2>/dev/null | cut -d: -f7)
     zsh_path=$(which zsh)
+    current_shell=$(dscl . -read /Users/$USER UserShell 2>/dev/null | awk '{print $2}' || echo "$SHELL")
     
     if [ "$current_shell" != "$zsh_path" ]; then
-        echo "Changing default shell to zsh..."
-        if grep -q "$zsh_path" /etc/shells 2>/dev/null; then
-            chsh -s "$zsh_path" 2>/dev/null && echo "Default shell changed to zsh" || {
-                echo "Note: Please run 'chsh -s $zsh_path' manually to set zsh as default shell"
-                echo "You may need to enter your password"
+        echo "Current shell: $current_shell"
+        echo "Changing default shell to zsh: $zsh_path"
+        
+        # Add zsh to /etc/shells if not present
+        if ! grep -q "$zsh_path" /etc/shells 2>/dev/null; then
+            echo "Adding $zsh_path to /etc/shells..."
+            echo "$zsh_path" | sudo tee -a /etc/shells > /dev/null
+        fi
+        
+        # Change default shell
+        if command -v chsh >/dev/null 2>&1; then
+            echo "Running: chsh -s $zsh_path"
+            chsh -s "$zsh_path" && echo "✓ Default shell changed to zsh" || {
+                echo "❌ Failed to change shell automatically"
+                echo "Please run manually: chsh -s $zsh_path"
             }
         else
-            echo "Note: zsh path not in /etc/shells. Please add '$zsh_path' to /etc/shells"
+            echo "❌ chsh command not found"
+            echo "Please change your default shell manually in system settings"
         fi
     else
-        echo "zsh is already the default shell"
+        echo "✓ zsh is already the default shell"
     fi
 else
     echo "Installing zsh..."
@@ -78,6 +88,22 @@ else
     fi
 fi
 
+# Install Powerlevel10k theme
+echo "Installing Powerlevel10k theme..."
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+        echo "Powerlevel10k installed successfully!"
+    else
+        echo "Powerlevel10k already installed"
+    fi
+else
+    echo "Oh My Zsh not found. Installing Oh My Zsh first..."
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+    echo "Oh My Zsh and Powerlevel10k installed successfully!"
+fi
+
 echo "Dotfiles installation complete!"
 echo "Backup of original files saved in: $BACKUP_DIR"
 echo ""
@@ -85,6 +111,10 @@ echo "Please update the following in ~/.gitconfig:"
 echo "  - Your name and email address"
 echo ""
 echo "To apply changes:"
-echo "  - For zsh: source ~/.zshrc"
-echo "  - For bash: source ~/.bashrc"
+echo "  - Close and reopen your terminal (or restart your terminal app)"
+echo "  - If shell didn't change, run manually: chsh -s $(which zsh)"
+echo "  - Run 'p10k configure' to configure Powerlevel10k theme"
 echo "  - For tmux: tmux source-file ~/.tmux.conf"
+echo ""
+echo "Note: You may need to restart your terminal application or log out/in"
+echo "to see the zsh shell change take effect."
