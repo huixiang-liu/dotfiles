@@ -5,10 +5,7 @@ Personal configuration files for development environment setup.
 ## Contents
 
 - `.zshrc` - Zsh shell configuration with Oh My Zsh setup
-- `.bashrc` - Bash shell configuration
 - `.vimrc` - Vim editor configuration
-- `.gitignore_global` - Global gitignore patterns
-- `.tmux.conf` - Tmux terminal multiplexer configuration
 - `install.sh` - Installation script
 
 ## Installation
@@ -34,7 +31,6 @@ Personal configuration files for development environment setup.
 
 - Creates backups of existing dotfiles in `~/.dotfiles_backup_YYYYMMDD_HHMMSS`
 - Creates symbolic links from your home directory to the dotfiles in this repository
-- Configures git to use the global gitignore file
 - Installs Claude Code CLI tool
 - Installs zsh (if not present) and sets it as the default shell
 
@@ -42,12 +38,12 @@ Personal configuration files for development environment setup.
 
 - **Shell**: Restart your terminal to use zsh as the default shell
 - **Zsh users**: Run `source ~/.zshrc` to apply changes immediately  
-- **Tmux users**: Start tmux or run `tmux source-file ~/.tmux.conf`
 - **Claude Code**: The `claude` command should be available in your terminal
 
 ## Features
 
 ### Shell Configuration
+- **Zsh**: Modern shell with Oh My Zsh configuration
 - Command aliases for common operations
 - Docker shortcuts
 - Node.js/npm shortcuts
@@ -55,23 +51,15 @@ Personal configuration files for development environment setup.
 - Colorized output
 
 ### Vim Configuration
-- Line numbers and relative line numbers
-- Smart indentation
-- Search highlighting
-- Backup and undo file management
-- Useful key mappings
-
-### Tmux Configuration
-- Ctrl-a prefix key
-- Intuitive pane splitting
-- Mouse support
-- Vi-mode key bindings
-- Custom status bar
+- Basic display settings (line numbers, ruler)
+- Smart search (incremental, case-insensitive)
+- Proper indentation (4 spaces)
+- Syntax highlighting
+- Essential editing features
 
 ### Development Tools
 - **Claude Code**: AI-powered coding assistant CLI
-- **Zsh**: Modern shell with Oh My Zsh configuration
-- **Global gitignore**: Common patterns for ignoring files
+- **Oh My Zsh**: Plugin management and themes
 
 ## Customization
 

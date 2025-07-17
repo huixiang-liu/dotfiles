@@ -26,13 +26,7 @@ backup_and_link() {
 
 # Install dotfiles
 backup_and_link ".zshrc"
-backup_and_link ".bashrc"
 backup_and_link ".vimrc"
-backup_and_link ".gitignore_global"
-backup_and_link ".tmux.conf"
-
-# Update git global gitignore
-git config --global core.excludesfile ~/.gitignore_global
 
 # Install Claude Code via npm
 echo "Installing Claude Code..."
@@ -102,7 +96,6 @@ echo ""
 echo "To apply changes:"
 echo "  - Close and reopen your terminal (or restart your terminal app)"
 echo "  - If shell didn't change, run manually: chsh -s $(which zsh)"
-echo "  - For tmux: tmux source-file ~/.tmux.conf"
 echo ""
 echo "Note: You may need to restart your terminal application or log out/in"
 echo "to see the zsh shell change take effect."
