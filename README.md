@@ -25,9 +25,9 @@ Personal configuration files for development environment setup.
    ./install.sh
    ```
 
-3. Update your personal information in `.gitconfig`:
+3. Update your organization information in `.gitconfig`:
    - Replace "Your Name" with your actual name
-   - Replace "your.email@example.com" with your email address
+   - Replace "your.work.email@organization.com" with your organization email address
 
 ## What the installation script does
 
@@ -76,12 +76,25 @@ Feel free to modify these files to suit your preferences. The beauty of dotfiles
 
 ## Organization Use
 
-When using these dotfiles in an organization setting:
+These dotfiles are designed for organization/team use:
 
-1. Fork this repository to your personal GitHub account
-2. Customize the configurations for your organization's standards
-3. Share the repository with team members
-4. Each team member can clone and install using the same process
+1. **Team Setup**:
+   - This repository should be hosted on your personal GitHub account
+   - Share the repository URL with your organization team members
+   - Each team member clones and installs using the same process
+
+2. **Installation for team members**:
+   ```bash
+   git clone https://github.com/YOUR_PERSONAL_USERNAME/dotfiles.git
+   cd dotfiles
+   ./install.sh
+   ```
+
+3. **Customization for your organization**:
+   - Update `.gitconfig` with organization-specific settings
+   - Modify shell aliases to match your team's workflow
+   - Add organization-specific vim/tmux configurations
+   - Commit and push changes for the whole team
 
 ## License
 
