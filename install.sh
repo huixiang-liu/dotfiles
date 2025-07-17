@@ -25,7 +25,6 @@ backup_and_link() {
 }
 
 # Install dotfiles
-backup_and_link ".gitconfig"
 backup_and_link ".zshrc"
 backup_and_link ".bashrc"
 backup_and_link ".vimrc"
@@ -99,9 +98,6 @@ fi
 
 echo "Dotfiles installation complete!"
 echo "Backup of original files saved in: $BACKUP_DIR"
-echo ""
-echo "Please update the following in ~/.gitconfig:"
-echo "  - Your name and email address"
 echo ""
 echo "To apply changes:"
 echo "  - Close and reopen your terminal (or restart your terminal app)"

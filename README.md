@@ -4,7 +4,6 @@ Personal configuration files for development environment setup.
 
 ## Contents
 
-- `.gitconfig` - Git configuration with useful aliases and settings
 - `.zshrc` - Zsh shell configuration with Oh My Zsh setup
 - `.bashrc` - Bash shell configuration
 - `.vimrc` - Vim editor configuration
@@ -25,9 +24,11 @@ Personal configuration files for development environment setup.
    ./install.sh
    ```
 
-3. Update your organization information in `.gitconfig`:
-   - Replace "Your Name" with your actual name
-   - Replace "your.work.email@organization.com" with your organization email address
+3. Configure git if needed:
+   ```bash
+   git config --global user.name "Your Name"
+   git config --global user.email "your.work.email@organization.com"
+   ```
 
 ## What the installation script does
 
@@ -45,12 +46,6 @@ Personal configuration files for development environment setup.
 - **Claude Code**: The `claude` command should be available in your terminal
 
 ## Features
-
-### Git Configuration
-- Useful aliases (`gs`, `ga`, `gc`, `gp`, `gl`, etc.)
-- Better log formatting
-- Auto-rebase on pull
-- Global gitignore
 
 ### Shell Configuration
 - Command aliases for common operations
@@ -76,7 +71,7 @@ Personal configuration files for development environment setup.
 ### Development Tools
 - **Claude Code**: AI-powered coding assistant CLI
 - **Zsh**: Modern shell with Oh My Zsh configuration
-- **Git**: Optimized configuration with useful aliases
+- **Global gitignore**: Common patterns for ignoring files
 
 ## Customization
 
