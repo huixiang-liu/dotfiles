@@ -88,20 +88,13 @@ else
     fi
 fi
 
-# Install Powerlevel10k theme
-echo "Installing Powerlevel10k theme..."
-if [ -d "$HOME/.oh-my-zsh" ]; then
-    if [ ! -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-        echo "Powerlevel10k installed successfully!"
-    else
-        echo "Powerlevel10k already installed"
-    fi
-else
-    echo "Oh My Zsh not found. Installing Oh My Zsh first..."
+# Install Oh My Zsh if not present
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-    echo "Oh My Zsh and Powerlevel10k installed successfully!"
+    echo "Oh My Zsh installed successfully!"
+else
+    echo "Oh My Zsh already installed"
 fi
 
 echo "Dotfiles installation complete!"
@@ -113,7 +106,6 @@ echo ""
 echo "To apply changes:"
 echo "  - Close and reopen your terminal (or restart your terminal app)"
 echo "  - If shell didn't change, run manually: chsh -s $(which zsh)"
-echo "  - Run 'p10k configure' to configure Powerlevel10k theme"
 echo "  - For tmux: tmux source-file ~/.tmux.conf"
 echo ""
 echo "Note: You may need to restart your terminal application or log out/in"
